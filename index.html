@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -158,56 +158,62 @@ body {
             <input type="phone_number" id="phone_number"   name="Phone Number" required>
             <label>Phone Number</label>
           </div>
-          <div class="pb-2">
+          <div class="user-box">
             <button id="saveData" class="btn btn-outline-light" type="submit" value="Login">Submit</button>
-        </div>
-
-           
+        </div>           
         </form>
       </div>
+
+      
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyDwQuixdxrFpb-NEz1e9KfUEn30M3s1-40",
+  authDomain: "trpbank-c9cba.firebaseapp.com",
+  databaseURL: "https://trpbank-c9cba-default-rtdb.firebaseio.com",
+  projectId: "trpbank-c9cba",
+  storageBucket: "trpbank-c9cba.appspot.com",
+  messagingSenderId: "114953945978",
+  appId: "1:114953945978:web:68af5e48197747f48e4cc3",
+  measurementId: "G-2QVBJY3L63"
+};
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  saveData.addEventListener('click',(e) => {
+      var username = document.getElementById('username').value;
+      var email = document.getElementById('email').value;
+      var phone_number = document.getElementById('phone_number').value;
+      var today = new Date();
+      var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      set(ref(database, 'users/' + username), {
+          username: username,
+          email: email,
+          phone_number : phone_number,
+          date : today,
+          time : time
+
+      });
+
+      document.getElementById('username').value="";
+      document.getElementById('email').value="";
+      document.getElementById('phone_number').value="";
+      
+      alert('Details saved');
+
+      setTimeout(function(){
+        
+          window.location = 'base.html';     
+       }, 2000);
+
+  });
+  
+</script>
 </body>
 
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-    apiKey: "AIzaSyDwQuixdxrFpb-NEz1e9KfUEn30M3s1-40",
-    authDomain: "trpbank-c9cba.firebaseapp.com",
-    databaseURL: "https://trpbank-c9cba-default-rtdb.firebaseio.com",
-    projectId: "trpbank-c9cba",
-    storageBucket: "trpbank-c9cba.appspot.com",
-    messagingSenderId: "114953945978",
-    appId: "1:114953945978:web:68af5e48197747f48e4cc3",
-    measurementId: "G-2QVBJY3L63"
-};
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    saveData.addEventListener('click',(e) => {
-        var username = document.getElementById('username').value;
-        var email = document.getElementById('email').value;
-        var phone_number = document.getElementById('phone_number').value;
-        var today = new Date();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        set(ref(database, 'users/' + username), {
-            username: username,
-            email: email,
-            phone_number : phone_number,
-            date : today,
-            time : time
-
-        });
-        document.getElementById('username').value="";
-        document.getElementById('email').value="";
-        document.getElementById('password').value="";
-        alert('Details saved');
-        setTimeout(function(){
-            window.location = 'login.html';     
-         }, 2000);
-    });
-</script>
 </html>
