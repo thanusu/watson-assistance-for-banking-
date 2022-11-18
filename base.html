@@ -30,58 +30,66 @@
            background-size: cover;
      }
 
-.text-overlay
-{
-    position: absolute;
-    top: 30%; left: 25%;
-    transform: translate(-50%, -50%);
-}
-.text-overlay h1
-{
-    font-size: 4.2rem;
-    /* white-space: pre; */
-    color:rgb(223, 17, 17);
-    font-family: 'Calibri';
-    font-size: 30px;
-    line-height: 36px;
-    font-weight: 800;
+#hero {
+  width: 90%;
+  height: 100vh;
 }
 
-.trb{
-  font-family: 'Calibri';
-  letter-spacing: 4px;
-  box-sizing: border-box;
+/* background blur black color */
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.8);
   position: absolute;
-  top: -280%; left: -22%;
-font-size: large;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
+#hero .container {
+  padding-top: 220px;
+  text-align: center;
+}
 
+#hero h1 {
+  margin: 0;
+  font-size: 53px;
+  font-weight: 600;
+  line-height: 64px;
+  color: #03e9f4;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn{
+  display: inline-block;
+  border: 2px solid #03e9f4;
+  background: rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+/* content below content  */
+
+#hero h2 {
+  color: rgba(0, 0, 0, 0.9);
+  margin: 10px 0 0 0;
+  font-size: 24px;
+}
 </style> 
 
 </head> 
      <body>
-      <div style="text-align: center; ">
-        <canvas id="canvas1"></canvas>
-        <div class = "text-overlay">
-          <h1 id="myElement">AI Based Discourse for Banking Industry
-          </h1>
-          <h1 class="trb" style="color: black;">TRB</h1>
-          <!-- <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
-          <script>
-            new TypeIt('#myElement', {
-              speed:100
-            })
-            .go();
-            </script> -->
-          </div>
-       
-        </div>
+          <section id="hero" class="d-flex align-items-center justify-content-center">
+            <div class="container" data-aos="fade-up">
+              <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-xl-6 col-lg-8">
+                  <h1>AI Based Discourse for Banking Industry</h1>
+                  <h2>Chatbots for banking and finance operations.</h2><br>
+                  <button class="btn btn-outline-light scrollto ">Submit</button>
+                </div>
+              </div>
+            </div>
+          </section>
      </body>
-     </html>
-
-
-   
-
 </body>
 </html>
